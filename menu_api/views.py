@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from rest_framework import generics
+from rest_framework import generics, permissions
 from menu.models import Item
 from .serializers import ItemSerializer
 from rest_framework.views import APIView
@@ -15,6 +15,7 @@ class ItemList(generics.ListAPIView):
 
 class ItemDetail(generics.RetrieveUpdateDestroyAPIView):
 
+    #permission_classes = [permissions.IsAuthenticated]
     serializer_class = ItemSerializer
 
     def get_object(self, queryset=None, **kwargs):
